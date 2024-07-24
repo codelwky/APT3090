@@ -1,0 +1,38 @@
+import random
+
+def is_prime(num):
+    """ Check if a number is prime """
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def generate_prime(minimum, maximum):
+    """ Generate a prime number within the specified range """
+    while True:
+        num = random.randint(minimum, maximum)
+        if is_prime(num):
+            return num
+
+def main():
+    # Define the range for generating prime numbers
+    min_range = 100
+    max_range = 1000
+    
+    # Generate two prime numbers
+    p = generate_prime(min_range, max_range)
+    q = generate_prime(min_range, max_range)
+    
+    print(f"Randomly generated prime number p: {p}")
+    print(f"Randomly generated prime number q: {q}")
+
+if __name__ == "__main__":
+    main()
