@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+string encryptDecrypt(const string& toEncrypt, char key) {
+    string output = toEncrypt;
+    
+    for (int i = 0; i < toEncrypt.size(); i++)
+        output[i] = toEncrypt[i] ^ key;
+    
+    return output;
+}
+
+int main() {
+    string input;
+    char key = 'K'; // Example key, can be any character
+    
+    cout << "Enter a string to encrypt: ";
+    getline(cin, input);
+    
+    string encrypted = encryptDecrypt(input, key);
+    cout << "Encrypted: " << encrypted << "\n";
+    
+    string decrypted = encryptDecrypt(encrypted, key);
+    cout << "Decrypted: " << decrypted << "\n";
+    
+    return 0;
+}
